@@ -9,7 +9,7 @@ const NewPost = ({ addPost }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addPost({ title, content });
-    navigate('/blog'); // Redirect to the blog page
+    navigate('/blog'); 
   };
 
   return (

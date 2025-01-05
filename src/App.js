@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from "react";
 import AddBlog from "./components/AddBlog";
 import BlogList from "./components/BlogList";
@@ -10,7 +9,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   const handleAddBlog = () => {
-    setRefresh((prev) => !prev); // Toggle refresh to re-fetch blogs
+    setRefresh((prev) => !prev);
   };
 
   const toggleTheme = () => {
@@ -20,7 +19,7 @@ const App = () => {
   return (
     <div className={darkMode ? "App dark" : "App light"}>
       <header>
-        <h1>My Blogging Platform</h1>
+        <h1>Abhay Blogs</h1>
         <button onClick={toggleTheme} className="theme-toggle">
           {darkMode ? "Light Mode" : "Dark Mode"}
         </button>

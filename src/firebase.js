@@ -1,4 +1,3 @@
-// This file is used to initialize the Firebase app and export the Firestore database instance
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 

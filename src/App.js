@@ -7,14 +7,24 @@ import "./App.css";
 
 const App = () => {
   const [refresh, setRefresh] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleAddBlog = () => {
     setRefresh((prev) => !prev); // Toggle refresh to re-fetch blogs
   };
 
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="App">
-      <h1>Abhay's Blogging Platform</h1>
+    <div className={darkMode ? "App dark" : "App light"}>
+      <header>
+        <h1>My Blogging Platform</h1>
+        <button onClick={toggleTheme} className="theme-toggle">
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
+      </header>
       <AddBlog onAdd={handleAddBlog} />
       <BlogList key={refresh} />
       <Footer />

@@ -1,53 +1,106 @@
-/* src/App.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
 }
 
-.add-blog-form {
-  margin-bottom: 20px;
+.light {
+  background-color: #f4f4f9;
+  color: #333;
 }
 
-.form-input,
-.form-textarea {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+.dark {
+  background-color: #222;
+  color: #f4f4f9;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
   border-radius: 5px;
 }
 
-.form-button {
+.theme-toggle {
   padding: 10px 20px;
-  background-color: #007bff;
+  background: #ffc107;
   color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.form-button:hover {
-  background-color: #0056b3;
+.blog-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px auto;
+  max-width: 600px;
+  text-align: left;
+  background: #fff;
+  color: #333; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.blog-list {
+.dark .blog-card {
+  background: #333;
+  color: #f4f4f9; 
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  background: #fff;
+  color: #333;
+}
+
+.dark input,
+.dark textarea {
+  background: #444; 
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  padding: 20px;
+  background-color: #222;
+  color: #fff;
   margin-top: 20px;
 }
 
-.blog-card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 10px auto;
-  max-width: 500px;
-  text-align: left;
+footer a {
+  color: #1da1f2;
+  text-decoration: none;
+  margin: 0 10px;
 }
 
-.blog-date {
-  font-size: 12px;
-  color: #555;
+footer a:hover {
+  text-decoration: underline;
 }

@@ -119,4 +119,4 @@ Feel free to fork the repository and make pull requests. If you find any bugs or
 
 This project is open-source and available under the MIT License.
 
-Built with ❤️ by Your Name
+Built with ❤️ by [Abhayy](https://instagram.com/abhayy.___)

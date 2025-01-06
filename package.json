@@ -14,6 +14,7 @@
     "react-router-dom": "^7.1.1",
     "react-scripts": "^5.0.1",
     "uuid": "^11.0.3",
+    "vite": "^6.0.7",
     "web-vitals": "^4.2.4"
   },
   "scripts": {
@@ -44,5 +45,9 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"
-  }
+  },
+  "description": "A full-stack blogging platform where users can create, and view blog posts. Built using **React** for the frontend and **Firebase** for the backend to store and retrieve data. It also supports **dark mode** for better user experience and includes various UI enhancements to make it more attractive. 😇",
+  "main": "tailwind.config.js",
+  "author": "",
+  "license": "ISC"
 }

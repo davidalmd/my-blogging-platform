@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import React, { useState, useEffect } from 'react';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { db } from '../firebase';
+import LoadingSpinner from './LoadingSpinner';
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
+  const [blogsLoading, setBlogsLoading] = useState(false);
 
   useEffect(() => {
-    const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+    setBlogsLoading(true);
+    const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const blogsData = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -16,6 +19,7 @@ const BlogList = () => {
       }));
       setBlogs(blogsData);
       setFilteredBlogs(blogsData); // Initialize filteredBlogs with full list
+      setBlogsLoading(false);
     });
 
     return () => unsubscribe();
@@ -34,7 +38,6 @@ const BlogList = () => {
     <div className="blog-list">
       <h2>Blog Posts</h2>
 
-     
       <input
         type="text"
         placeholder="Search blogs..."
@@ -42,16 +45,17 @@ const BlogList = () => {
         onChange={handleSearch}
         className="search-bar"
         style={{
-          padding: "10px",
-          width: "100%",
-          maxWidth: "400px",
-          marginBottom: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
+          padding: '10px',
+          width: '100%',
+          maxWidth: '400px',
+          marginBottom: '20px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
         }}
       />
-
-      {filteredBlogs.length === 0 ? (
+      
+      {blogsLoading && <LoadingSpinner color='#007BFF'/>}
+      {!filteredBlogs.length ? (
         <p>No blogs match your search. Try a different keyword!</p>
       ) : (
         filteredBlogs.map((blog) => (
@@ -64,8 +68,6 @@ const BlogList = () => {
           </div>
         ))
       )}
-
-      
     </div>
   );
 };

@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -48,13 +48,14 @@ header {
   max-width: 600px;
   text-align: left;
   background: #fff;
-  color: #333; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark .blog-card {
   background: #333;
-  color: #f4f4f9; 
+  color: #f4f4f9;
 }
 
 .blog-card:hover {
@@ -76,10 +77,11 @@ textarea {
 
 .dark input,
 .dark textarea {
-  background: #444; 
+  background: #444;
 }
 
 button {
+  width: 8rem;
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -103,4 +105,39 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+.loader {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.1rem;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #fff;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  transform-origin: center;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border-bottom: 4px solid #FFC107;
+  border-left: 4px solid transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

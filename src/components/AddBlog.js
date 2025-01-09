@@ -1,30 +1,36 @@
-import React, { useState } from "react";
-import { Timestamp, collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import React, { useState } from 'react';
+import { Timestamp, collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import LoadingSpinner from './LoadingSpinner';
 
 const AddBlog = ({ onAdd }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [isAdding, setIsAdding] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (title.trim() === "" || content.trim() === "") {
-      alert("Please fill in all fields");
+    if (title.trim() === '' || content.trim() === '') {
+      alert('Please fill in all fields');
       return;
     }
 
     try {
-      await addDoc(collection(db, "blogs"), {
+      setIsAdding(true);
+
+      await addDoc(collection(db, 'blogs'), {
         title,
         content,
         createdAt: Timestamp.now(),
       });
-      setTitle("");
-      setContent("");
+      setTitle('');
+      setContent('');
       onAdd();
     } catch (err) {
-      console.error("Error adding blog:", err);
+      console.error('Error adding blog:', err);
+    } finally {
+      setIsAdding(false);
     }
   };
 
@@ -44,7 +50,7 @@ const AddBlog = ({ onAdd }) => {
         className="form-textarea"
       />
       <button type="submit" className="form-button">
-        Add Blog
+        {isAdding ? <LoadingSpinner /> : 'Add Blog'}
       </button>
     </form>
   );

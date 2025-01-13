@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import LoadingSpinner from './LoadingSpinner';
+import DeleteBlogButton from './DeleteBlogButton';
+import EditBlogButton from './EditBlogButton';
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
@@ -34,6 +36,11 @@ const BlogList = () => {
     setFilteredBlogs(filtered);
   };
 
+  const handleDeleteSuccess = (deletedBlogId) => {
+    setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== deletedBlogId));
+    setFilteredBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== deletedBlogId));
+  }
+
   return (
     <div className="blog-list">
       <h2>Blog Posts</h2>
@@ -60,11 +67,17 @@ const BlogList = () => {
       ) : (
         filteredBlogs.map((blog) => (
           <div key={blog.id} className="blog-card">
-            <h3>{blog.title}</h3>
-            <p>{blog.content}</p>
-            <span className="blog-date">
-              {blog.createdAt && blog.createdAt.toDate().toLocaleString()}
-            </span>
+            <div className='blog-infos'>
+              <h3>{blog.title}</h3>
+              <p>{blog.content}</p>
+              <span className="blog-date">
+                {blog.createdAt && blog.createdAt.toDate().toLocaleString()}
+              </span>
+            </div>
+            <div className='blog-actions'>
+              <EditBlogButton blogId={blog.id} />
+              <DeleteBlogButton blogId={blog.id} onDeleteSuccess={handleDeleteSuccess} />
+            </div>
           </div>
         ))
       )}

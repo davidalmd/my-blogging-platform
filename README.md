@@ -46,7 +46,11 @@ npm install
 
 - Create a project in Firebase Console. 
 - Go to Firestore Database and create a collection named *blogs*.
-- Add your Firebase configuration to *firebase.js*
+- Now, go to your Firebase project *settings*.
+- Find the _Your Applications_ section, which will probably be under the *General* tab.
+- Create an *application* for your project on the desired platform. (In our case, a _Web App_)
+- You will see your project configuration keys.
+- Add your Firebase configuration to *firebase.js*.
 
 ```bash
 import { initializeApp } from "firebase/app";
@@ -59,7 +63,8 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
